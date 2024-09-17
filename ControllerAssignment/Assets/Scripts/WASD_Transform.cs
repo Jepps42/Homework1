@@ -27,5 +27,26 @@ public class WASD_Transform : MonoBehaviour
         {
             pos.x += speed * Time.deltaTime;
         }
+
+        //If I press left arrow, make the object move left
+        if (Input.GetKey(KeyCode.LeftArrow))
+        {
+            pos.x -= speed * Time.deltaTime;
+        }
+
+        //If I press down arrow, make the object go down
+        if (Input.GetKey(KeyCode.DownArrow))
+        {
+            pos.y -= speed * Time.deltaTime;
+        }
+
+        //If I press up arrow, make the object go up
+        if (Input.GetKey(KeyCode.UpArrow))
+        {
+            pos.y += speed * Time.deltaTime;
+        }
+
+        //Transform position needs to be in the last line for it to function (hiearchy)
+        transform.position = pos;
     }
 }
