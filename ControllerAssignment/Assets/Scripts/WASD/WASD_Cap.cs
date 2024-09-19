@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NewBehaviourScript : MonoBehaviour
+public class WASD_Cap : MonoBehaviour
 {
     //Variables
     public float forceamt = 5f;
@@ -48,5 +48,15 @@ public class NewBehaviourScript : MonoBehaviour
             //Make rigidboyd go up
             capsule.AddForce(Vector2.up * forceamt);
         }
-    }  
+    }
+
+    //On collisionenter2D, happens when two 2D objects with colliders hit each other
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        //Make the cube change color when it hits the player 2 cube
+        if (collision.transform.tag == "Player 1")
+        {
+            GetComponent<SpriteRenderer>().color = Color.cyan;
+        }
+    }
 }
