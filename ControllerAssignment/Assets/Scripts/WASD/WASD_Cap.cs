@@ -13,7 +13,6 @@ public class WASD_Cap : MonoBehaviour
 
     private Color defaultColor = Color.cyan;
 
-    public GameManager gameManager;
 
     // Start is called before the first frame update
     void Start()
@@ -21,8 +20,6 @@ public class WASD_Cap : MonoBehaviour
         //Find rigidbody that this script is on
         capsule = GetComponent<Rigidbody2D>();
 
-        //Find the gameManager
-        gameManager = FindObjectOfType<GameManager>();
     }
 
     // Update is called once per frame
@@ -71,9 +68,6 @@ public class WASD_Cap : MonoBehaviour
         {
             GetComponent<SpriteRenderer>().color = Color.red;
         }
-
-        //Score Plus 1
-        gameManager.sc_num++;
     }
 
     //OnCollisionExit2D, happens when two 2D objects with colliders separate

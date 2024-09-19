@@ -10,17 +10,24 @@ public class GameManager : MonoBehaviour
 
     public int sc_num;
 
+    public TextMeshProUGUI p3score;
+
+    public int p3sc_num;
+
     // Start is called before the first frame update
     void Start()
     {
         //Make the score 0
         sc_num = 0;
+        p3sc_num = 0;
         //score.text = "Score: " + sc_num;
     }
 
     // Update is called once per frame
     void Update()
     {
-       score.text = "Score: " + sc_num;
+       
+        score.text = "Score: " + sc_num;
+        p3score.text = "Score: " + p3sc_num;
     }
 }
