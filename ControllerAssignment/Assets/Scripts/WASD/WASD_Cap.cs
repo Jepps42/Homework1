@@ -11,11 +11,18 @@ public class WASD_Cap : MonoBehaviour
 
     private Rigidbody2D capsule;
 
+    private Color defaultColor = Color.cyan;
+
+    public GameManager gameManager;
+
     // Start is called before the first frame update
     void Start()
     {
         //Find rigidbody that this script is on
         capsule = GetComponent<Rigidbody2D>();
+
+        //Find the gameManager
+        gameManager = FindObjectOfType<GameManager>();
     }
 
     // Update is called once per frame
@@ -54,9 +61,25 @@ public class WASD_Cap : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         //Make the cube change color when it hits the player 2 cube
-        if (collision.transform.tag == "Player 1")
+        if (collision.transform.tag == "Player 2")
         {
-            GetComponent<SpriteRenderer>().color = Color.cyan;
+            GetComponent<SpriteRenderer>().color = Color.green;
         }
+
+        //Make the cube change color when it hits player 3 
+        if (collision.transform.tag == "Player 3")
+        {
+            GetComponent<SpriteRenderer>().color = Color.red;
+        }
+
+        //Score Plus 1
+        gameManager.sc_num++;
+    }
+
+    //OnCollisionExit2D, happens when two 2D objects with colliders separate
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        //Every time we exit, we want object to change back to original color
+        GetComponent<SpriteRenderer>().color = defaultColor;
     }
 }
