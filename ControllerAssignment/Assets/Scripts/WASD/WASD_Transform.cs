@@ -7,15 +7,18 @@ public class WASD_Transform : MonoBehaviour
     //Variables
     public float speed = 5f;
 
-    
-    // Start is called before the first frame update
-    void Start()
+    public GameObject pl2;
+
+    private bool spawn = true;
+
+    private void Awake()
     {
-        //Not calling any varible to find the object
+        pl2 = this.gameObject;
     }
 
+
     // Update is called once per frame
-    void Update()
+    /*void Update()
     {
         //Find the object every frame and make a vector
         Vector2 pos = transform.position;
@@ -48,5 +51,23 @@ public class WASD_Transform : MonoBehaviour
 
         //Transform position needs to be in the last line for it to function (hiearchy)
         transform.position = pos;
+    }*/
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+
+        if (spawn)
+        {
+            spawn = false;
+            //Spawn a Player 2 at a random location
+            var pos = new Vector2(Random.Range(-6, 6), Random.Range(-3, 3));
+            Instantiate(pl2, pos, Quaternion.identity);
+
+            //Destroy player
+            Destroy(this.gameObject);
+            spawn = true;
+        }
     }
+    
+    //x: 8, -8 y: 3, -2.9
 }
