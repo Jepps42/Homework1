@@ -11,12 +11,12 @@ public class WASD_Transform : MonoBehaviour
 
     private bool spawn = true;
 
-    public GameManager gameManager;
+    //public GameManager gameManager;
 
     private void Awake()
     {
         pl2 = this.gameObject;
-        gameManager = FindObjectOfType<GameManager>();
+        //gameManager = FindObjectOfType<GameManager>();
     }
 
 
@@ -66,12 +66,14 @@ public class WASD_Transform : MonoBehaviour
             spawn = false;
             if (collision.transform.CompareTag("Player 1"))
             {
-                gameManager.sc_num++;
+                //gameManager.sc_num++;
+                GameManager.instance.sc_num++;
 
             }
             else if (collision.transform.tag == "Player 3")
             {
-                gameManager.p3sc_num++;
+                //gameManager.p3sc_num++;
+                GameManager.instance.p3sc_num++;
             }
             //Spawn a Player 2 at a random location
             var pos = new Vector2(Random.Range(-6, 6), Random.Range(-3, 3));
