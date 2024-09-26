@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -17,7 +18,8 @@ public class GameManager : MonoBehaviour
 
     public int p3sc_num;
 
-
+    private bool restartGame = true;
+    
     //Awake is called on sopawn of this script before Start
     private void Awake()
     {
@@ -50,5 +52,15 @@ public class GameManager : MonoBehaviour
        
         score.text = "Score: " + sc_num;
         p3score.text = "Score: " + p3sc_num;
+    }
+
+    public void StartGame()
+    {
+        
+        if (restartGame)
+        {
+            SceneManager.LoadScene("Gamescene");
+            restartGame = false;
+        }
     }
 }

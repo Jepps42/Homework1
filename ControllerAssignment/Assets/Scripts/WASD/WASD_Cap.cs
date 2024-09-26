@@ -67,7 +67,10 @@ public class WASD_Cap : MonoBehaviour
         if (collision.transform.tag == "Player 3")
         {
             GetComponent<SpriteRenderer>().color = Color.red;
+            
         }
+
+        GameManager.instance.StartGame();
     }
 
     //OnCollisionExit2D, happens when two 2D objects with colliders separate
